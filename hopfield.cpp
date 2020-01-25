@@ -22,6 +22,7 @@ int randState()
 		return -1;
 }
 
+//initializes bipolar valued vectors and matrix
 void initNet()
 {
 	vector<int> row(100);
@@ -37,6 +38,7 @@ void initNet()
 		weights.push_back(wow);
 }
 
+//debug function
 void printNet()
 {
 	cout<<"printing...\n\n";
@@ -50,6 +52,7 @@ void printNet()
 	}
 }
 
+//imprints a random p of the 50 patterns 
 void imprint(int p)
 {
 	int wSum;
@@ -67,6 +70,7 @@ void imprint(int p)
 	}
 }
 
+//determines overall stability of p imprints
 int stability(int p)
 {
 	vector<int> net(100);
@@ -108,6 +112,7 @@ int stability(int p)
 	return num;
 }
 
+//outputs calculated data to a .csv file for analysis
 void printData()
 {
 	ofstream ofs;
@@ -125,6 +130,7 @@ void printData()
 	}
 	ofs.close();
 }
+
 int main() {
 
 	int p,i;
@@ -137,7 +143,6 @@ int main() {
 		for(p=1; p<=50; p++){
 			imprint(p);
 			stable[p-1] = stability(p);
-//			cout<<"stability("<<p<<"): "<<stable[p-1]<<endl;
 		}
 
 		data.push_back(stable);
